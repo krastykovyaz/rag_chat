@@ -41,7 +41,7 @@ def send_message(chat_id: int,
         "Content-Type": "application/json"
     }
 
-    response = requests.get(URL_SEND_MESSAGE.format(TELEGRAM_TOKEN), headers=headers, data=json.dumps(payload))
+    response = requests.get(URL_SEND_MESSAGE.format(config.TG_API_TOKEN), headers=headers, data=json.dumps(payload))
     response = response.json()
  
     res = response.get("ok")
@@ -54,7 +54,7 @@ def send_photo(chat_id, path):
     method = "/sendPhoto"
     params = {'chat_id': chat_id}
     files = {'photo': file_opened}
-    resp = requests.post('https://api.telegram.org/bot' + config.TELEGRAM_TOKEN + method, params, files=files)
+    resp = requests.post('https://api.telegram.org/bot' + config.TG_API_TOKEN + method, params, files=files)
     return resp
 
 if __name__ == '__main__':
