@@ -1,0 +1,15 @@
+gigachain-cli
+sentence-transformers
+rank_bm25
+datasets
+gigachain
+gigachat
+notifiers
+telebot
+langchain
+unstructured
+chromadb
+pdfminer.six
+python-docx
+typing_extensions
+huggingface-hub

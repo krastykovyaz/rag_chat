@@ -1,0 +1,9 @@
+.python-version
+venv
+dataset_word/
+credentials.py
+.python-version
+hak_main.ipynb
+__pycache__
+chat_giga.py
+.DS_Store
