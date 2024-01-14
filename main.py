@@ -91,7 +91,8 @@ ensemble_retriever = config.EnsembleRetriever(
     retrievers=[embedding_retriever, bm25_retriever],
     weights=[0.4, 0.6],
 )
-DEFAULT_SYSTEM_PROMPT = "Ты — ГигаЧат, русскоязычный автоматический ассистент СберБанка. Ответь на вопрос кратко."
+DEFAULT_SYSTEM_PROMPT = "Ты — Гоша, русскоязычный автоматический ассистент СберБанка. Ответь на вопрос кратко."
+
 
 # embedding_retriever = faiss_db.as_retriever(search_kwargs={"k": 5})
 def get_answer(message: str):
