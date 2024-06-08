@@ -2,6 +2,9 @@
 import config
 from message_sendler import send_message
 import time
+import sys
+sys.path.append('..')
+# from text_classification import classification_text
 
 def tokenize(s: str) -> list[str]:
     """Очень простая функция разбития предложения на слова"""
@@ -91,7 +94,7 @@ ensemble_retriever = config.EnsembleRetriever(
     retrievers=[embedding_retriever, bm25_retriever],
     weights=[0.4, 0.6],
 )
-DEFAULT_SYSTEM_PROMPT = "Ты — Гоша, русскоязычный автоматический ассистент СберБанка. Ответь на вопрос кратко."
+DEFAULT_SYSTEM_PROMPT = "Ты — Гоша, русскоязычный автоматический ассистент оператора мобильной связи СберМобайл. Ответь на вопрос по контексту."
 
 
 # embedding_retriever = faiss_db.as_retriever(search_kwargs={"k": 5})
@@ -188,17 +191,17 @@ def callback_handler(call):
         bot.delete_message(call.message.json['chat']['id'], temp_message_id)
 
 if __name__=='__main__':
-    # while True:
-    #     try:
-    llm = config.GigaChat(credentials=config.CREDS)
-    qa = config.RetrievalQA.from_chain_type(
+    while True:
+        try:
+            llm = config.GigaChat(credentials=config.CREDS)
+            qa = config.RetrievalQA.from_chain_type(
         llm=llm,
         chain_type="stuff",
         retriever=ensemble_retriever,
         return_source_documents=True,
     )
-    print('Started...')
-    bot.polling()
-        # except:
-        #     bot.send_message(cur_id, 'Чет пошло не так. Попробуй еще☺️')
-        #     pass
+            print('Started...')
+            bot.polling()
+        except:
+            bot.send_message(cur_id, 'Чет пошло не так. Попробуй еще☺️')
+            pass
